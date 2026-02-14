@@ -1,20 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 :root {
   --bg-color: #f2f9fe;
   --text-color: #223344;
   --primary-color: #2a4dd0;
   --white: #ffffff;
-}
-
-@media (max-width: 1024px) {
-  card-wrapper {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 640px) {
-  headbarnav-item {
-    display: none;
-  }
 }
 
 body.dark-mode {
@@ -27,23 +30,19 @@ body.dark-mode {
 .App {
   text-align: center;
   background-color: var(--bg-color);
-  height: 100%;
-}
-
-.appData-wrapper {
-  padding: 20px;
+  min-height: 100vh;
 }
 
 .headbar-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   place-items: center;
+  padding: 20px;
 }
 
 .headbar-linkwrapper {
   display: grid;
   width: 100%;
-  height: 100%;
   grid-template-columns: repeat(4, 1fr);
 }
 
@@ -55,24 +54,6 @@ body.dark-mode {
   transition: 0.3s ease;
 }
 
-.theme-img {
-  width: 100%;
-}
-
-/* Hide dark by default */
-.dark-img {
-  display: none;
-}
-
-/* When dark mode active */
-body.dark-mode .light-img {
-  display: none;
-}
-
-body.dark-mode .dark-img {
-  display: block;
-}
-
 .headbarnav-item.active {
   color: var(--primary-color);
   border-bottom: 2px solid var(--primary-color);
@@ -82,64 +63,82 @@ body.dark-mode .dark-img {
   color: var(--primary-color);
 }
 
+.theme-img {
+  width: 100%;
+}
+
+.dark-img {
+  display: none;
+}
+
+body.dark-mode .light-img {
+  display: none;
+}
+
+body.dark-mode .dark-img {
+  display: block;
+}
+
 .card-wrapper {
   display: grid;
-  grid-template-columns: 0.45fr 0.55fr;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  padding: 40px 20px;
 }
 
 .dataCard-wrapper {
-  margin-top: 80px;
-  height: 90%;
-  width: 80%;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   display: grid;
-  grid-template-rows: 40px 1fr 80px 80px 120px;
-  gap: 10px;
-  padding: 20px 100px;
+  grid-template-rows: auto auto auto auto auto;
+  gap: 20px;
+  padding: 20px 40px;
 }
 
 .dataCard-simpleWayText {
   text-align: left;
-  font-size: 1.125rem;
+  font-size: 1rem;
   color: var(--text-color);
   font-weight: 600;
   text-transform: uppercase;
 }
 
 .dataCard-mainText {
-  width: 70%;
   text-align: left;
   font-size: 4rem;
   color: var(--text-color);
-  font-weight: 1000;
+  font-weight: 900;
+  max-width: 600px;
 }
 
 .dataCard-subheading {
-  margin-top: 20px;
   text-align: left;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   color: var(--text-color);
   font-weight: 500;
+  margin-top: 10px;
 }
 
 .dataCard-btnwrappers {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
-  place-items: center;
 }
 
 .dataCard-completeBtn {
   background-color: var(--primary-color);
-  font-size: 1.2rem;
-  height: 60px;
+  font-size: 1rem;
+  height: 55px;
   padding: 12px 24px;
   border-radius: 12px;
-  font-weight: 800;
+  font-weight: 700;
   cursor: pointer;
   transition: 0.3s ease;
   border: none;
   color: var(--white);
-  width: 80%;
+  width: 100%;
 }
 
 .dataCard-completeBtn:hover {
@@ -149,14 +148,14 @@ body.dark-mode .dark-img {
 
 .dataCard-underlineBtn {
   background: none;
-  font-size: 1.2rem;
+  font-size: 1rem;
   border: none;
-  height: 60px;
+  height: 55px;
   color: var(--primary-color);
   font-weight: 700;
   border-bottom: 2px solid var(--primary-color);
   cursor: pointer;
-  width: 80%;
+  width: 100%;
   padding: 12px 0;
 }
 
@@ -168,16 +167,15 @@ body.dark-mode .dark-img {
 .dataCard-extraData {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 20px;
   color: var(--text-color);
-  height: 40%;
 }
 
 .datacard-extraDataImageWrapper {
   display: grid;
-  grid-template-columns: 10px 1fr;
-  place-items: center;
-  width: 90%;
-  margin: 10px;
+  grid-template-columns: 30px 1fr;
+  align-items: center;
+  gap: 10px;
 }
 
 .custom-switch {
@@ -202,13 +200,13 @@ body.dark-mode .dark-img {
 }
 
 .switch-icons img {
-  width: 25px;
+  width: 20px;
 }
 
 .switch-thumb {
-  margin-left: 15px;
+  margin-left: 5px;
   width: 30px;
-  height: 32px;
+  height: 30px;
   background-color: #ffffff;
   border-radius: 50%;
   position: absolute;
@@ -216,5 +214,104 @@ body.dark-mode .dark-img {
 }
 
 .custom-switch.dark-mode .switch-thumb {
-  transform: translateX(30px);
+  transform: translateX(35px);
+}
+
+.hamburger {
+  display: none;
+  width: 30px;
+  cursor: pointer;
+}
+
+.closeIcon {
+  width: 30px;
+  align-self: flex-end;
+  cursor: pointer;
+}
+
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 70%;
+  height: 100vh;
+  background-color: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  padding: 80px 20px;
+  gap: 20px;
+  transition: right 0.3s ease;
+  z-index: 1000;
+  align-items: center;
+}
+
+.mobileMenu.open {
+  right: 0;
+}
+
+.mobileMenuItem {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}
+
+@media (max-width: 1024px) {
+  .card-wrapper {
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+  }
+
+  .dataCard-mainText {
+    font-size: 3rem;
+    max-width: 100%;
+  }
+
+  .dataCard-wrapper {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .card-wrapper {
+    grid-template-columns: 1fr;
+  }
+  .headbarnav-item {
+    display: none;
+  }
+
+  .dataCard-mainText {
+    font-size: 2.2rem;
+  }
+
+  .dataCard-btnwrappers {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .dataCard-extraData {
+    grid-template-columns: 1fr 1fr;
+  }
+  .card-wrapper > :first-child {
+    order: 2;
+  }
+
+  .card-wrapper > :last-child {
+    order: 1;
+  }
+
+  .headbar-uiModeChanfeWrapper {
+    display: none;
+  }
+  .hamburger {
+    display: block;
+  }
 }
